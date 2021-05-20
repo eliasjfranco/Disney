@@ -1,5 +1,6 @@
 package com.disney.model;
 
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,41 +8,40 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="PELICULA_PERSONAJE")
-public class Pelicula_Personaje {
-
+@Table(name="PELICULA_GENERO")
+public class Pelicula_Genero {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_pelicula")
-	private Long id;
-	
-	@ManyToOne()
-	@JoinColumn(name="personaje_nombre", nullable = false)
-	private Personaje personaje;
+	@Column(name="id")
+	private long id;
+
+	@ManyToOne
+	@JoinColumn(name="genero", nullable = false)
+	private Genero genero;
 	
 	@ManyToOne
-	@JoinColumn(name="pelicula_nombre", nullable = false)
+	@JoinColumn(name="pelicula", nullable = false)
 	private Pelicula_Serie pelicula_serie;
 
-	public Pelicula_Personaje() {
+	public Pelicula_Genero() {
 		super();
 	}
 
-	public Pelicula_Personaje(Personaje personaje, Pelicula_Serie pelicula_serie) {
+	public Pelicula_Genero(Genero genero, Pelicula_Serie pelicula_serie) {
 		super();
-		this.personaje = personaje;
+		this.genero = genero;
 		this.pelicula_serie = pelicula_serie;
 	}
 
-	public Personaje getPersonaje() {
-		return personaje;
+	public Genero getGenero() {
+		return genero;
 	}
 
-	public void setPersonaje(Personaje personaje) {
-		this.personaje = personaje;
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 	public Pelicula_Serie getPelicula_serie() {
@@ -51,8 +51,5 @@ public class Pelicula_Personaje {
 	public void setPelicula_serie(Pelicula_Serie pelicula_serie) {
 		this.pelicula_serie = pelicula_serie;
 	}
-	
-	
-	
 	
 }

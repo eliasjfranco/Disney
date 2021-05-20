@@ -1,16 +1,12 @@
 package com.disney.model;
 
 import javax.persistence.Table;
-
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -31,9 +27,8 @@ public class Pelicula_Serie {
 	@Column(name="calificacion")
 	private int calificacion;
 	
-	@ManyToOne
-	@JoinColumn(name="fk_genero")
-	private Genero genero;
+	@OneToMany(mappedBy = "pelicula_serie")
+	private List<Pelicula_Genero> peli_genero;
 	
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Personaje> peli_personaje;
@@ -42,14 +37,14 @@ public class Pelicula_Serie {
 		super();
 	}
 
-	public Pelicula_Serie(byte[] imagen, String titulo, Date fecha, int calificacion, Genero genero,
+	public Pelicula_Serie(byte[] imagen, String titulo, Date fecha, int calificacion, List<Pelicula_Genero> peli_genero,
 			List<Pelicula_Personaje> peli_personaje) {
 		super();
 		this.imagen = imagen;
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.calificacion = calificacion;
-		this.genero = genero;
+		this.peli_genero = peli_genero;
 		this.peli_personaje = peli_personaje;
 	}
 
@@ -85,14 +80,6 @@ public class Pelicula_Serie {
 		this.calificacion = calificacion;
 	}
 
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
 	public List<Pelicula_Personaje> getPeli_personaje() {
 		return peli_personaje;
 	}
@@ -100,6 +87,15 @@ public class Pelicula_Serie {
 	public void setPeli_personaje(List<Pelicula_Personaje> peli_personaje) {
 		this.peli_personaje = peli_personaje;
 	}
+
+	public List<Pelicula_Genero> getPeli_genero() {
+		return peli_genero;
+	}
+
+	public void setPeli_genero(List<Pelicula_Genero> peli_genero) {
+		this.peli_genero = peli_genero;
+	}
+	
 	
 	
 	

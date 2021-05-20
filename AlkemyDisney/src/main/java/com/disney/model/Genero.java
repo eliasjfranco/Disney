@@ -11,6 +11,8 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -25,14 +27,15 @@ public class Genero {
 	@Column(name="img")
 	private byte[] imagen;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "genero", cascade = CascadeType.ALL)
-	private List<Pelicula_Serie> peli;
+	private List<Pelicula_Genero> peli;
 
 	public Genero() {
 		super();
 	}
 
-	public Genero(String nombre, byte[] imagen, List<Pelicula_Serie> peli) {
+	public Genero(String nombre, byte[] imagen, List<Pelicula_Genero> peli) {
 		super();
 		this.nombre = nombre;
 		this.imagen = imagen;
@@ -55,11 +58,11 @@ public class Genero {
 		this.imagen = imagen;
 	}
 
-	public List<Pelicula_Serie> getPeli() {
+	public List<Pelicula_Genero> getPeli() {
 		return peli;
 	}
 
-	public void setPeli(List<Pelicula_Serie> peli) {
+	public void setPeli(List<Pelicula_Genero> peli) {
 		this.peli = peli;
 	}
 	
