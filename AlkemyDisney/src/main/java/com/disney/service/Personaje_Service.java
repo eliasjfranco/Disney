@@ -34,6 +34,10 @@ public class Personaje_Service {
 		repository.deleteById(nombre);
 	}
 	
+	public boolean existByName(String nombre) {
+		return repository.existsById(nombre);
+	}
+	
 	public List<Personaje> findByNombre(String nombre){
 		return repository.findByNombre(nombre);
 	}

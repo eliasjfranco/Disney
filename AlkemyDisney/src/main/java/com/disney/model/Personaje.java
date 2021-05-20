@@ -25,15 +25,13 @@ public class Personaje {
 
 	@Column(name="edad")
 	private Integer edad;
-	
-	@JsonIgnore
+
 	@Column(name="peso")
 	private float peso;
-	
-	@JsonIgnore
+
 	@Column(name="historia")
 	private String historia;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "personaje")
 	private List<Pelicula_Personaje> peli;
