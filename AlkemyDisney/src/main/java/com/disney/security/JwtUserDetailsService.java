@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.disney.model.Usuario;
 import com.disney.repository.IUsuario;
+import com.disney.sendgrid.SendMailService;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -34,6 +35,9 @@ public class JwtUserDetailsService implements UserDetailsService {
 		Usuario usuario = new Usuario();
 		usuario.setUsuario(user.getUsername());
 		usuario.setPwd(bcryptEncoder.encode(user.getPwd()));
+		usuario.setCorreo(user.getEmail());
+		SendMailService email = new SendMailService();
+		email.enviarEmail(user.getUsername(), user.getEmail());
 		return usuarioRepo.save(usuario);
 	}
 	

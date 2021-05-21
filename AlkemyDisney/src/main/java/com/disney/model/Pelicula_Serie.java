@@ -1,7 +1,7 @@
 package com.disney.model;
 
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -22,7 +22,7 @@ public class Pelicula_Serie {
 	private String titulo;
 
 	@Column(name="fecha")
-	private Date fecha;
+	private LocalDate fecha;
 	
 	@Column(name="calificacion")
 	private int calificacion;
@@ -37,7 +37,7 @@ public class Pelicula_Serie {
 		super();
 	}
 
-	public Pelicula_Serie(byte[] imagen, String titulo, Date fecha, int calificacion, List<Pelicula_Genero> peli_genero,
+	public Pelicula_Serie(byte[] imagen, String titulo, LocalDate fecha, int calificacion, List<Pelicula_Genero> peli_genero,
 			List<Pelicula_Personaje> peli_personaje) {
 		super();
 		this.imagen = imagen;
@@ -64,11 +64,11 @@ public class Pelicula_Serie {
 		this.titulo = titulo;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 

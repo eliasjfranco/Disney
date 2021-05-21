@@ -23,15 +23,19 @@ public class Usuario {
 	@JsonIgnore
 	@Column(name="password")
 	private String pwd;
+	
+	@Column(name="email")
+	private String email;
 
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String usuario, String pwd) {
+	public Usuario(String usuario, String pwd, String correo) {
 		super();
 		this.usuario = usuario;
 		this.pwd = pwd;
+		this.email = correo;
 	}
 
 	public String getUsuario() {
@@ -49,5 +53,15 @@ public class Usuario {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
+	public String getCorreo() {
+		return email;
+	}
+
+	public void setCorreo(String correo) {
+		this.email = correo;
+	}
+
+	
 	
 }
