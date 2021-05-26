@@ -19,7 +19,7 @@ public class SendMailService{
 		Email from = new Email("disneyalkemy@gmail.com");
 		Email to = new Email(receptor);
 		Mail mail = new Mail(from, subject, to, content);
-		SendGrid sg = new SendGrid("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");
+		SendGrid sg = new SendGrid("");
 		Request request = new Request();
 		try {
 			request.setMethod(Method.POST);
