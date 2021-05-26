@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
@@ -13,11 +15,15 @@ import javax.persistence.OneToMany;
 @Table(name="PELICULA_SERIE")
 public class Pelicula_Serie {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_pelicula")
+	private long id;
+	
 	@Lob
 	@Column(name="img")
 	private byte[] imagen;
 	
-	@Id
 	@Column(name="titulo")
 	private String titulo;
 
@@ -29,7 +35,7 @@ public class Pelicula_Serie {
 	
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Genero> peli_genero;
-	
+
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Personaje> peli_personaje;
 
@@ -95,11 +101,13 @@ public class Pelicula_Serie {
 	public void setPeli_genero(List<Pelicula_Genero> peli_genero) {
 		this.peli_genero = peli_genero;
 	}
-	
-	
-	
-	
-	
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

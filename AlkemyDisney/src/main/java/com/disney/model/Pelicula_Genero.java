@@ -1,6 +1,9 @@
 package com.disney.model;
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +21,14 @@ public class Pelicula_Genero {
 	@Column(name="id")
 	private long id;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="genero", nullable = false)
 	private Genero genero;
 	
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="pelicula", nullable = false)
+	@JoinColumn(name="id_pelicula", nullable = false)
 	private Pelicula_Serie pelicula_serie;
 
 	public Pelicula_Genero() {
@@ -50,6 +55,14 @@ public class Pelicula_Genero {
 
 	public void setPelicula_serie(Pelicula_Serie pelicula_serie) {
 		this.pelicula_serie = pelicula_serie;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

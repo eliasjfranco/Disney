@@ -20,15 +20,19 @@ public class Genero_Service {
 		return repository.findAll();
 	}
 	
-	public Genero getPersonaje(String nombre) {
-		return repository.getOne(nombre);
+	public Genero getGeneroById(long id) {
+		return repository.getOne(id);
 	}
 	
-	public void updatePersonaje(Genero genero) {
+	public Genero getGeneroByNombre(String nombre) {
+		return repository.findByNombre(nombre);
+	}
+	
+	public void updateGenero(Genero genero) {
 		repository.save(genero);
 	}
 	
-	public void deletePersonaje(String nombre) {
-		repository.deleteById(nombre);
+	public void deleteGenero(long id) {
+		repository.deleteById(id);
 	}
 }

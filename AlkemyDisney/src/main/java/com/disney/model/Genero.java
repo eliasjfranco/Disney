@@ -14,12 +14,18 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name="GENERO")
 public class Genero {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_genero")
+	private long id;
+	
 	@Column(name="nombre")
 	private String nombre;
 	
@@ -65,7 +71,13 @@ public class Genero {
 	public void setPeli(List<Pelicula_Genero> peli) {
 		this.peli = peli;
 	}
-	
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

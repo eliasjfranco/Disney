@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="PELICULA_PERSONAJE")
 public class Pelicula_Personaje {
@@ -18,10 +20,12 @@ public class Pelicula_Personaje {
 	@Column(name="id_pelicula")
 	private Long id;
 	
+	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name="personaje_nombre", nullable = false)
 	private Personaje personaje;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="pelicula_nombre", nullable = false)
 	private Pelicula_Serie pelicula_serie;

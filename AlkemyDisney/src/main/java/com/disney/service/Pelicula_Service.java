@@ -22,16 +22,20 @@ public class Pelicula_Service {
 		return repository.findAll();
 	}
 	
-	public Pelicula_Serie getPersonaje(String titulo) {
-		return repository.getOne(titulo);
+	public Pelicula_Serie getPelicula(String titulo) {
+		return repository.findByTitulo(titulo);
 	}
 	
-	public void updatePersonaje(Pelicula_Serie peli) {
+	public void updatePelicula(Pelicula_Serie peli) {
 		repository.save(peli);
 	}
 	
-	public void deletePersonaje(String titulo) {
-		repository.deleteById(titulo);
+	public void deletePelicula(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public List<Pelicula_Serie> getByGenero(long id) {
+		return repository.findByPeli_Genero(id);
 	}
 	
 }
