@@ -20,7 +20,7 @@ public class SendMailService{
 		Content content = new Content("text/plain", "Bienvenido: " +usuario+" a Disney Challenge!");
 		Email to = new Email(receptor);
 		Mail mail = new Mail(from, subject, to, content);
-		SendGrid sg = new SendGrid("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");
+		SendGrid sg = new SendGrid("");
 		Request request = new Request();
 		try {
 			request.setMethod(Method.POST);
