@@ -1,7 +1,6 @@
 package com.disney.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +9,12 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="PERSONAJE")
 public class Personaje {
-	
+
 	@Lob
 	@Column(name="img")
 	private byte[] imagen;
@@ -21,31 +22,36 @@ public class Personaje {
 	@Id
 	@Column(name="nombre")
 	private String nombre;
-	
+
 	@Column(name="edad")
-	private int edad;
-	
+	private Integer edad;
+
 	@Column(name="peso")
 	private float peso;
-	
+
 	@Column(name="historia")
 	private String historia;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "personaje", cascade = CascadeType.ALL)
-	private List<Pelicula_Serie> peli;
+	private List<Pelicula_Personaje> peli;
 
 	public Personaje() {
 		super();
 	}
 
-	public Personaje(byte[] imagen, String nombre, int edad, float peso, String historia) {
+	public Personaje(byte[] imagen, String nombre, Integer edad, float peso, String historia,
+			List<Pelicula_Personaje> peli) {
 		super();
 		this.imagen = imagen;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.peso = peso;
 		this.historia = historia;
+		this.peli = peli;
 	}
+
+
 
 	public byte[] getImagen() {
 		return imagen;
@@ -87,14 +93,14 @@ public class Personaje {
 		this.historia = historia;
 	}
 
-	public List<Pelicula_Serie> getPeli() {
+	public List<Pelicula_Personaje> getPeli_personaje() {
 		return peli;
 	}
 
-	public void setPeli(List<Pelicula_Serie> peli) {
-		this.peli = peli;
+	public void setPeli_personaje(List<Pelicula_Personaje> peli_personaje) {
+		this.peli = peli_personaje;
 	}
 	
 	
-
+	
 }

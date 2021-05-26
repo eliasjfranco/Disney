@@ -1,65 +1,64 @@
 package com.disney.model;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="PELICULA_SERIE")
 public class Pelicula_Serie {
-
-	@Lob
-	@Column(name="img")
-	private Byte[] imagen;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_pelicula")
+	private long id;
+	
+	@Lob
+	@Column(name="img")
+	private byte[] imagen;
+	
 	@Column(name="titulo")
 	private String titulo;
-	
-	@Column(name="fecha_creacion")
-	private Date fecha;
+
+	@Column(name="fecha")
+	private LocalDate fecha;
 	
 	@Column(name="calificacion")
 	private int calificacion;
 	
-	@ManyToOne
-	@JoinColumn(name="titulo")
-	private Genero genero;
-	
-	@ManyToOne
-	@JoinColumn(name="personaje")
-	private Personaje personaje;
-	
-	@OneToMany(mappedBy = "peli_serie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pelicula_serie")
+	private List<Pelicula_Genero> peli_genero;
+
+	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Personaje> peli_personaje;
 
 	public Pelicula_Serie() {
 		super();
 	}
 
-	public Pelicula_Serie(Byte[] imagen, String titulo, Date fecha, int calificacion, Genero genero) {
+	public Pelicula_Serie(byte[] imagen, String titulo, LocalDate fecha, int calificacion, List<Pelicula_Genero> peli_genero,
+			List<Pelicula_Personaje> peli_personaje) {
 		super();
 		this.imagen = imagen;
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.calificacion = calificacion;
-		this.genero = genero;
+		this.peli_genero = peli_genero;
+		this.peli_personaje = peli_personaje;
 	}
 
-	public Byte[] getImagen() {
+	public byte[] getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(Byte[] imagen) {
+	public void setImagen(byte[] imagen) {
 		this.imagen = imagen;
 	}
 
@@ -71,11 +70,11 @@ public class Pelicula_Serie {
 		this.titulo = titulo;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -87,22 +86,6 @@ public class Pelicula_Serie {
 		this.calificacion = calificacion;
 	}
 
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
-	public Personaje getPersonaje() {
-		return personaje;
-	}
-
-	public void setPersonaje(Personaje personaje) {
-		this.personaje = personaje;
-	}
-
 	public List<Pelicula_Personaje> getPeli_personaje() {
 		return peli_personaje;
 	}
@@ -110,7 +93,21 @@ public class Pelicula_Serie {
 	public void setPeli_personaje(List<Pelicula_Personaje> peli_personaje) {
 		this.peli_personaje = peli_personaje;
 	}
-	
-	
+
+	public List<Pelicula_Genero> getPeli_genero() {
+		return peli_genero;
+	}
+
+	public void setPeli_genero(List<Pelicula_Genero> peli_genero) {
+		this.peli_genero = peli_genero;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }
