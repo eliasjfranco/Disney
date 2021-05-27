@@ -1,5 +1,6 @@
 package com.disney.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class Pelicula_Service {
 	}
 	
 	public List<Pelicula_Serie> getByGenero(long id) {
-		return repository.findByPeli_Genero(id);
+		return repository.findByPeliGenero(id);
 	}
 	
 	public List<Pelicula_Serie> getByTitulo(String titulo) {
@@ -39,11 +40,11 @@ public class Pelicula_Service {
 	}
 	
 	public List<Pelicula_Serie> findAllAsc(){
-		return repository.findAllByOrderByTituloAsc();
+		return repository.findByOrderByTituloAsc();
 	}
 	
 	public List<Pelicula_Serie> findAllDesc(){
-		return repository.findAllByOrderByTituloDesc();
+		return repository.findByOrderByTituloDesc();
 	}
 	
 }

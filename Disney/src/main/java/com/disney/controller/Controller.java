@@ -100,9 +100,9 @@ public class Controller {
 				if(orden.equals("DESC"))
 					peli = peliService.findAllDesc();
 			}
-		}else {
-			peli = peliService.getAll();
 		}
+		if(peli.isEmpty())
+			peli = peliService.getAll();
 		return peli;
 	}
 	

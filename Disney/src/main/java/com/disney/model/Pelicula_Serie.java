@@ -34,7 +34,7 @@ public class Pelicula_Serie {
 	private int calificacion;
 	
 	@OneToMany(mappedBy = "pelicula_serie")
-	private List<Pelicula_Genero> peli_genero;
+	private List<Pelicula_Genero> peliGenero;
 
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Personaje> peli_personaje;
@@ -50,7 +50,7 @@ public class Pelicula_Serie {
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.calificacion = calificacion;
-		this.peli_genero = peli_genero;
+		this.peliGenero = peli_genero;
 		this.peli_personaje = peli_personaje;
 	}
 
@@ -95,11 +95,11 @@ public class Pelicula_Serie {
 	}
 
 	public List<Pelicula_Genero> getPeli_genero() {
-		return peli_genero;
+		return peliGenero;
 	}
 
 	public void setPeli_genero(List<Pelicula_Genero> peli_genero) {
-		this.peli_genero = peli_genero;
+		this.peliGenero = peli_genero;
 	}
 
 	public long getId() {
