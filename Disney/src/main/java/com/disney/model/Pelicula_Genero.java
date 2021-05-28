@@ -20,15 +20,19 @@ public class Pelicula_Genero {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
+	
+	private long id_genero;
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="genero", nullable = false)
+	@JoinColumn(name="id_genero", nullable = false, insertable = false, updatable = false)
 	private Genero genero;
+	
+	private long id_pelicula;
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="id_pelicula", nullable = false)
+	@JoinColumn(name="id_pelicula", nullable = false, insertable = false, updatable = false)
 	private Pelicula_Serie pelicula_serie;
 
 	public Pelicula_Genero() {
@@ -63,6 +67,22 @@ public class Pelicula_Genero {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getId_pelicula() {
+		return id_pelicula;
+	}
+
+	public void setId_pelicula(long id_pelicula) {
+		this.id_pelicula = id_pelicula;
+	}
+
+	public long getId_genero() {
+		return id_genero;
+	}
+
+	public void setId_genero(long id_genero) {
+		this.id_genero = id_genero;
 	}
 	
 }

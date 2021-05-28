@@ -1,6 +1,9 @@
 package com.disney.model;
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
@@ -33,9 +36,11 @@ public class Pelicula_Serie {
 	@Column(name="calificacion")
 	private int calificacion;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Genero> peliGenero;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "pelicula_serie")
 	private List<Pelicula_Personaje> peli_personaje;
 
