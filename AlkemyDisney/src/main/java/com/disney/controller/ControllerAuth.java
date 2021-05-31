@@ -1,5 +1,4 @@
 package com.disney.controller;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,13 +6,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.disney.jwt.JwtRequest;
 import com.disney.jwt.JwtResponse;
-
-
 import org.springframework.web.bind.annotation.RestController;
-
 import com.disney.security.JwtUserDetailsService;
 import com.disney.security.User;
 import com.disney.service.AutenticacionService;
@@ -49,15 +44,5 @@ public class ControllerAuth {
 	public ResponseEntity<?> guardarUser(@RequestBody User user) throws Exception{
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
-	
-	/*private void autenticacion(String username, String password) throws Exception{
-		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		} catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
-		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
-		}
-	}*/
 	
 }

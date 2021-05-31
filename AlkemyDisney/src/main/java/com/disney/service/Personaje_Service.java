@@ -34,10 +34,6 @@ public class Personaje_Service {
 		repository.deleteById(nombre);
 	}
 	
-	public boolean existByName(String nombre) {
-		return repository.existsById(nombre);
-	}
-	
 	public List<Personaje> findByNombre(String nombre){
 		return repository.findByNombre(nombre);
 	}
@@ -48,6 +44,10 @@ public class Personaje_Service {
 	
 	public List<Personaje> findByPelicula(String nomb_peli){
 		return repository.findByPeli(nomb_peli);
+	}
+
+	public boolean existByName(String nombre) {
+		return repository.existsById(nombre);
 	}
 
 }

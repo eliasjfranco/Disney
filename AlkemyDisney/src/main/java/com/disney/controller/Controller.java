@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.disney.service.Peli_Pers_Service;
 import com.disney.service.Pelicula_Service;
 import com.disney.service.Personaje_Service;
 import com.disney.model.Mensaje;
@@ -85,19 +83,24 @@ public class Controller {
 	}
 	
 	@GetMapping(value="/movies")
-	public List<Personaje> peliculas(@RequestParam(value="genere", required = false)String genero,
+	public List<Pelicula_Serie> peliculas(@RequestParam(value="genere", required = false)String genero,
 							   				 @RequestParam(value="name", required = false)String nombre,
 							   				 @RequestParam(value="order", required = false)String orden) throws Exception{
 		List<Pelicula_Serie> peli = new ArrayList<Pelicula_Serie>();
-		if(genero!=null || nombre!=null|| peli!=null) {
+		if(genero!=null || nombre!=null || peli!=null) {
 			if(genero!=null)
 				peli = peliService.getByGenero(Long.parseLong(genero));
 			if(nombre!=null)
-				peli = peliService.getPelicula(nombre);
-			if(peli!=null)
-				peli = pService.findByPelicula(peli);
-		}else
-			peli = pService.getAll();
+				peli = peliService.getByTitulo(nombre);
+			if(orden!=null) {
+				if(orden.equals("ASC"))
+					peli = peliService.findAllAsc();
+				if(orden.equals("DESC"))
+					peli = peliService.findAllDesc();
+			}
+		}
+		if(peli.isEmpty())
+			peli = peliService.getAll();
 		return peli;
 	}
 	
