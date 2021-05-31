@@ -32,3 +32,4 @@ insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(1,'harr
 insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(2,'shrek');
 insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(5,'shrek');
 insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(6,'cenicienta');
+
