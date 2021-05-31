@@ -1,5 +1,9 @@
 select * from personaje;
 
+insert into personaje (nombre,edad,historia,peso) values('harry potter',13,'mago',40);
+insert into personaje (nombre,edad,historia,peso) values('shrek',30,'ogro',200);
+insert into personaje (nombre,edad,historia,peso) values('cenicienta',20,'princesa',50);
+
 select * from pelicula_serie;
 
 insert into pelicula_serie (calificacion, titulo) values (1,'a');
@@ -21,3 +25,10 @@ insert into pelicula_genero (id_genero,id_pelicula) values(1,3);
 insert into pelicula_genero (id_genero,id_pelicula) values(2,3);
 insert into pelicula_genero (id_genero,id_pelicula) values(1,4);
 insert into pelicula_genero (id_genero,id_pelicula) values(2,5);
+
+select * from pelicula_personaje
+
+insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(1,'harry potter');
+insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(2,'shrek');
+insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(5,'shrek');
+insert into pelicula_personaje (pelicula_nombre,personaje_nombre) values(6,'cenicienta');
