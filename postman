@@ -1,0 +1,58 @@
+------------- Registro -------------
+
+url: localhost:8085/auth/register
+method: POST
+body: {
+        "username":"elias",
+        "pwd":"elias123",
+        "email": "eliaass95@gmail.com" 
+    }
+    
+------------- Login -------------
+
+url: localhost:8085/auth/login
+method: POST
+body: {
+        "username":"elias",
+        "pwd":"elias123"
+    }
+header: {
+        "Authorization": "Bearer + (token)"
+    }
+    
+------------- Personajes -------------
+//Guardar
+
+url: localhost:8085/characters
+method: POST
+body: {
+        "imagen": null,
+        "nombre": "Shrek",
+        "edad": 40,
+        "historia": null,
+        "peso": 200 
+    }
+ header: {
+        "Authorization": "Bearer + (token)"
+    }
+    
+ //Eliminar
+ 
+url: localhost:8085/characters
+method: DEL
+param: name = "Shrek"
+header: {
+        "Authorization": "Bearer + (token)"
+    }
+    
+//Obtener
+
+url: localhost:8085/characters
+method: GET
+header: {
+        "Authorization": "Bearer + (token)"
+    }
+
+
+ 
+ 
